@@ -16,3 +16,16 @@ const db = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME
 });
+
+// WebSocket server
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on('connection', ws => {
+  console.log('New client connected');
+  ws.on('message', message => {
+    console.log(`Received message => ${message}`);
+  });
+  ws.on('close', () => {
+    console.log('Client has disconnected');
+  });
+});
