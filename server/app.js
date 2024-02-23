@@ -29,3 +29,13 @@ wss.on('connection', ws => {
     console.log('Client has disconnected');
   });
 });
+
+// Express routes
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server listening at http://localhost:${port}`);
+});
