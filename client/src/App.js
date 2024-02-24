@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Updated import
 import FighterCard from './components/FighterCard';
 
 function App() {
@@ -19,14 +19,16 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Switch>
-          <Route path="/">
-            {/* Render a FighterCard for each fighter */}
-            {fighters.map(fighter => (
-              <FighterCard key={fighter.id} fighter={fighter} />
-            ))}
-          </Route>
-        </Switch>
+        <Routes> {/* Updated from Switch to Routes */}
+          <Route path="/" element={
+            <div>
+              {/* Render a FighterCard for each fighter */}
+              {fighters.map(fighter => (
+                <FighterCard key={fighter.id} fighter={fighter} />
+              ))}
+            </div>
+          } />
+        </Routes>
       </div>
     </Router>
   );
